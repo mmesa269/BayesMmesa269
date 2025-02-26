@@ -10,9 +10,9 @@ def Teorema_bayes(Aprior, Sensitividad, Especificidad):
 st.title("Uso del Teorema de Bayes para determinar el chance de tener covid si se stiene un test positivo")
 
 # User inputs
-Aprior = st.slider("Probabilidad de tener covid [P(A)]", 0, 1.0, 0.04, 0.01)
+Aprior = st.slider("Probabilidad de tener covid [P(A)]", 0.01, 1.0, 0.04, 0.01)
 Sensitividad = st.slider("¿Cual es la sensitividad? (Aka: Tasa de positivos reales, [P(B | A)])", 0.5, 1.0, 0.73, 0.01)
-Especificidad = st.slider("¿Cual es la Especificidad? (Aka: Tasa de negativos reales, [P(¬B | ¬A)])", 0, 1.0, 0.95, 0.01)
+Especificidad = st.slider("¿Cual es la Especificidad? (Aka: Tasa de negativos reales, [P(¬B | ¬A)])", 0.01, 1.0, 0.95, 0.01)
 
 # Compute aposterior probability
 aposterior = Teorema_bayes(Aprior, Sensitividad, Especificidad)
