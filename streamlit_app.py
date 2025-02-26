@@ -1,21 +1,21 @@
 import streamlit as st
 
-def bayes_theorem(prior, sensitivity, specificity):
-    """Calculate the posterior probability using Bayes' Theorem."""
-    false_positive_rate = 1 - specificity
-    p_b = (sensitivity * prior) + (false_positive_rate * (1 - prior))
-    posterior = (sensitivity * prior) / p_b
-    return posterior
+def Teorema_bayes(Aprior, Sensitividad, Specificidad):
+    """Uso del Teorema de Bayes para determinar el chance de tener covid si se stiene un test positivo"""
+    Falsos_pos = 1 - Specificidad
+    p_b = (Sensitividad * Aprior) + (Falsos_pos * (1 - Aprior))
+    aposterior = (Sensitividad * Aprior) / p_b
+    return aposterior
 
 st.title("Bayes' Theorem: COVID-19 Test Probability Calculator")
 
 # User inputs
-prior = st.slider("Prior Probability (Prevalence of COVID-19 in population, P(A))", 0.01, 1.0, 0.04, 0.01)
-sensitivity = st.slider("Test Sensitivity (True Positive Rate, P(B | A))", 0.5, 1.0, 0.73, 0.01)
-specificity = st.slider("Test Specificity (True Negative Rate, P(¬B | ¬A))", 0.5, 1.0, 0.95, 0.01)
+Aprior = st.slider("Probabilidad de tener covid, P(A))", 0%, 100%, 4%, 0)
+Sensitividad = st.slider("Test Sensitividad (True Positive Rate, P(B | A))", 0.5, 1.0, 0.73, 0.01)
+Specificidad = st.slider("Test Specificidad (True Negative Rate, P(¬B | ¬A))", 0.5, 1.0, 0.95, 0.01)
 
-# Compute posterior probability
-posterior = bayes_theorem(prior, sensitivity, specificity)
+# Compute aposterior probability
+aposterior = Teorema_bayes(Aprior, Sensitividad, Specificidad)
 
 # Display result
-st.write(f"### Probability that you actually have COVID-19 given a positive test result: **{posterior:.4f} ({posterior*100:.2f}%)**")
+st.write(f"### Probability that you actually have COVID-19 given a positive test result: **{aposterior:.4f} ({aposterior*100:.2f}%)**")
